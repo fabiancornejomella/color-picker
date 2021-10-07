@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+  padding : 30px;
+}
+
+code {
+  padding: 5px 8px;
+  border-radius: 10px;
+  background-color: #f8f9f9;
+  color: #CC0066;
+}
+
+[type='color'] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  border: none;
+}
+
+[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+[type='color']::-webkit-color-swatch {
+  border: none;
+}
+
+.color-picker {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #f8f9f9;
+}
+    </style>
+
+</head>
+<body>
+    <p>A simple color picker that can be used with browsers that support <code>input[type=color]</code>.</p>
+<p style="margin-bottom:50px">You can see the HEX code of picked color.</p>
+
+<span class="color-picker">
+  <label for="colorPicker">
+    <input type="color" value="#1DB8CE" id="colorPicker">
+  </label>
+</span>
+
+<script>
+    document.querySelectorAll('input[type=color]').forEach(function(picker) {
+
+var targetLabel = document.querySelector('label[for="' + picker.id + '"]'),
+  codeArea = document.createElement('span');
+
+codeArea.innerHTML = picker.value;
+targetLabel.appendChild(codeArea);
+
+picker.addEventListener('change', function() {
+  codeArea.innerHTML = picker.value;
+  targetLabel.appendChild(codeArea);
+});
+});
+</script>
+</body>
+</html>
